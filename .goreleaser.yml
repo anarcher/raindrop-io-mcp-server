@@ -14,6 +14,19 @@ builds:
     main: ./main.go
     binary: raindrop-io-mcp-server
 
+dockers:
+  - image_templates:
+      - "anarcher/raindrop-io-mcp-server:{{ .Tag }}"
+      - "anarcher/raindrop-io-mcp-server:latest"
+    dockerfile: Dockerfile.goreleaser
+    build_flag_templates:
+      - "--pull"
+      - "--label=org.opencontainers.image.created={{.Date}}"
+      - "--label=org.opencontainers.image.title={{.ProjectName}}"
+      - "--label=org.opencontainers.image.revision={{.FullCommit}}"
+      - "--label=org.opencontainers.image.version={{.Version}}"
+    use: buildx
+
 checksum:
   name_template: "checksums.txt"
 
