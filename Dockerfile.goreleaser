@@ -4,4 +4,4 @@ WORKDIR /app
 RUN apk update --no-cache && apk add ca-certificates
 COPY raindrop-io-mcp-server /app/raindrop-io-mcp-server
 
-ENTRYPOINT ["/app/raindrop-mcp-server"]
+ENTRYPOINT ["/app/raindrop-io-mcp-server"]
